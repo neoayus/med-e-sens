@@ -1,49 +1,41 @@
-from flask import Flask, render_template, request
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 import pickle
 import numpy as np
 
-# Create Flask app
 app = Flask(__name__)
+CORS(app)
 
-# Load the trained model
 model = pickle.load(open("model.pkl", "rb"))
 
-# Home page
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return "Backend running"
 
-
-# Prediction route
 @app.route("/predict", methods=["POST"])
 def predict():
+    data = request.json
 
-    # Get form values
-    values = request.form
+    features = [
+        float(data["Pregnancies"]),
+        float(data["Glucose"]),
+        float(data["BloodPressure"]),
+        float(data["SkinThickness"]),
+        float(data["Insulin"]),
+        float(data["BMI"]),
+        float(data["DiabetesPedigreeFunction"]),
+        float(data["Age"])
+    ]
 
-    # Convert input values to float
-    features = [float(x) for x in values.values()]
-
-    # Convert to numpy array
     final_features = [np.array(features)]
-
-    # Predict using trained model
     prediction = model.predict(final_features)
 
-    # Interpret result
     if prediction[0] == 1:
-        result = "⚠ High Risk of Diabetes"
+        result = "High Risk of Diabetes"
     else:
-        result = "✅ Low Risk of Diabetes"
+        result = "Low Risk of Diabetes"
 
-    # Send result + input values back to HTML
-    return render_template(
-        "index.html",
-        prediction_text=result,
-        values=values
-    )
+    return jsonify({"prediction": result})
 
-
-# Run the application
 if __name__ == "__main__":
     app.run(debug=True)

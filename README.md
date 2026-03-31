@@ -1,4 +1,5 @@
-# AI Health Monitoring System 
+
+# AI Health Monitoring System
 
 AI Health Monitoring System is a machine learning–based web application designed to predict diabetes risk based on medical input parameters. The system uses a trained machine learning model to analyze health-related data and provide a prediction indicating whether a person is at high or low risk of diabetes.
 
@@ -20,21 +21,29 @@ The application follows a client–server architecture where the frontend is bui
 
 ## Project Structure
 
-```
+```id="3jybcl"
 med-e-sense/
 │
 ├── backend/
+│   ├── venv/
 │   ├── app.py
-│   ├── model.pkl
-│   ├── model_training.py
 │   ├── dataset.csv
+│   ├── model_training.py
+│   ├── model.pkl
 │   ├── requirements.txt
 │
 ├── frontend/
-│   ├── src/
+│   ├── node_modules/
 │   ├── public/
+│   ├── src/
+│   ├── .gitignore
+│   ├── eslint.config.js
+│   ├── index.html
 │   ├── package.json
+│   ├── package-lock.json
+│   ├── vite.config.js
 │
+├── .gitignore
 └── README.md
 ```
 
@@ -86,15 +95,25 @@ These inputs are passed to the machine learning model to generate the prediction
 
 ### Backend Setup
 
-```
+```id="plg6rj"
 cd backend
+python -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 python app.py
 ```
 
+The backend server will start at:
+
+```id="q6qztu"
+http://127.0.0.1:5000
+```
+
 ### Frontend Setup
 
-```
+Open a new terminal:
+
+```id="lv3g64"
 cd frontend
 npm install
 npm run dev
@@ -102,7 +121,7 @@ npm run dev
 
 Then open:
 
-```
+```id="qg82jo"
 http://localhost:5173
 ```
 
@@ -110,7 +129,7 @@ http://localhost:5173
 
 ## System Architecture
 
-```
+```id="4jjhb6"
 React Frontend → Flask Backend API → Machine Learning Model → Prediction → Frontend Display
 ```
 
@@ -124,3 +143,4 @@ React Frontend → Flask Backend API → Machine Learning Model → Prediction �
 * Deploy the application to cloud
 * Improve UI/UX
 * Add data visualization dashboard
+

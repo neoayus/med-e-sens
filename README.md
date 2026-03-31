@@ -3,7 +3,17 @@
 
 AI Health Monitoring System is a machine learning–based web application designed to predict diabetes risk based on medical input parameters. The system uses a trained machine learning model to analyze health-related data and provide a prediction indicating whether a person is at high or low risk of diabetes.
 
-The application follows a client–server architecture where the frontend is built using React and the backend is developed using Flask. The machine learning model is trained using a healthcare dataset and integrated into the backend for prediction.
+The application follows a client–server architecture where the frontend is built using React and the backend is developed using Flask. The machine learning model is trained using a 
+healthcare dataset and integrated into the backend for prediction.
+
+---
+
+## Live Deployment
+
+The application is deployed online and can be accessed using the following links:
+
+[frontend@render](https://med-e-sens-frontend-jbeu.onrender.com/)
+[apiserver@render](https://med-e-sens.onrender.com/)
 
 ---
 
